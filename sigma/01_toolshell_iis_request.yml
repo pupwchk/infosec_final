@@ -1,0 +1,27 @@
+title: SharePoint ToolShell Suspicious IIS Request
+id: local-sharepoint-toolshell-iis-request
+status: experimental
+description: Detects the suspicious IIS request pattern associated with
+  SharePoint ToolShell exploitation attempts (CVE-2025-53770).
+references:
+  - https://nvd.nist.gov/vuln/detail/CVE-2025-53770
+  - https://www.trendmicro.com/en_us/research/25/g/cve-2025-53770-and-cve-2025-53771-sharepoint-attacks.html
+date: 2025/08/01
+logsource:
+  category: webserver
+detection:
+  selection_method:
+    cs-method: 'POST'
+  selection_uri:
+    cs-uri-stem|contains: '/_layouts/15/ToolPane.aspx'
+    cs-uri-query|contains: 'DisplayMode=Edit&a=/ToolPane.aspx'
+  selection_referer:
+    cs-referer|contains: '/_layouts/SignOut.aspx'
+  condition: selection_method and selection_uri and selection_referer
+falsepositives:
+  - Unknown; validate against SharePoint administrative activity.
+level: high
+tags:
+  - attack.initial_access
+  - attack.t1190
+  - cve.2025-53770

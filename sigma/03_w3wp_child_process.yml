@@ -1,0 +1,30 @@
+title: IIS Worker Process Spawning Suspicious Child Process
+id: local-sharepoint-w3wp-child-process
+status: experimental
+description: Detects suspicious command execution spawned from the IIS
+  worker process (w3wp.exe) on SharePoint servers, indicative of
+  post-exploitation activity.
+date: 2025/08/01
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  parent:
+    ParentImage|endswith: '\w3wp.exe'
+  child:
+    Image|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+      - '\pwsh.exe'
+      - '\rundll32.exe'
+      - '\certutil.exe'
+      - '\bitsadmin.exe'
+      - '\mshta.exe'
+  condition: parent and child
+falsepositives:
+  - Rare administrative automation; validate with SharePoint administrators.
+level: high
+tags:
+  - attack.execution
+  - attack.t1059
+  - attack.t1105

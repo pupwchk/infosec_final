@@ -1,0 +1,32 @@
+title: Suspicious ASPX File Creation in SharePoint Layouts Directory
+id: local-sharepoint-toolshell-file-create
+status: experimental
+description: Detects suspicious ASPX file creation in SharePoint template
+  layout directories, associated with ToolShell web-shell deployment
+  (e.g. spinstall0.aspx).
+references:
+  - https://www.cyber.gc.ca/en/alerts-advisories/al25-009-vulnerability-impacting-microsoft-sharepoint-server-cve-2025-53770
+date: 2025/08/01
+logsource:
+  product: windows
+  category: file_event
+detection:
+  selection_path:
+    TargetFilename|contains:
+      - '\Microsoft Shared\Web Server Extensions\15\TEMPLATE\LAYOUTS\'
+      - '\Microsoft Shared\Web Server Extensions\16\TEMPLATE\LAYOUTS\'
+  selection_file:
+    TargetFilename|endswith:
+      - '\spinstall.aspx'
+      - '\spinstall0.aspx'
+      - '\spinstall1.aspx'
+      - '\debug_dev.js'
+  condition: selection_path and selection_file
+falsepositives:
+  - Legitimate SharePoint update or administrative deployment;
+    verify maintenance window.
+level: critical
+tags:
+  - attack.persistence
+  - attack.t1505.003
+  - cve.2025-53770

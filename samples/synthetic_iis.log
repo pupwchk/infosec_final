@@ -1,0 +1,8 @@
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-07-21 10:14:00
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-bytes cs-bytes time-taken
+2025-07-21 10:14:55 10.0.0.10 GET /_layouts/15/start.aspx - 443 - 198.51.100.20 Mozilla/5.0 - 200 2048 512 12
+2025-07-21 10:15:00 10.0.0.10 POST /_layouts/15/ToolPane.aspx DisplayMode=Edit&a=/ToolPane.aspx 443 - 203.0.113.50 Mozilla/5.0 /_layouts/SignOut.aspx 200 512 1024 30
+2025-07-21 10:15:03 10.0.0.10 GET /_layouts/15/spinstall0.aspx - 443 - 203.0.113.50 Mozilla/5.0 /_layouts/SignOut.aspx 200 128 256 15
+2025-07-21 10:15:40 10.0.0.10 GET /SitePages/Home.aspx - 443 DOMAIN\\alice 198.51.100.21 Mozilla/5.0 - 200 4096 256 20
