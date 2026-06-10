@@ -1,4 +1,4 @@
-# SharePoint "ToolShell" — Detection Rules & Defensive Tooling
+# SharePoint "ToolShell"
 
 Defensive repository for the 2025 Microsoft SharePoint **ToolShell** incident
 (**CVE-2025-53770 / CVE-2025-53771**).
@@ -31,6 +31,8 @@ python scanner/scan_toolshell_iis.py samples/synthetic_iis.log
 ```
 
 Example output against the provided synthetic log:
+<img width="936" height="67" alt="Screenshot 2026-06-10 at 16 38 29" src="https://github.com/user-attachments/assets/6327f93b-fddb-40c4-8526-5314c5a1ab04" />
+
 
 ```
 [ALERT] 2 suspicious event(s) found.
